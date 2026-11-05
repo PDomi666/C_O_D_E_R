@@ -1,66 +1,116 @@
 <!doctype html>
 <html lang="hu">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Főoldal</title>
-    <!--!Bootstrap-->
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-    <!--?Popper: dropdowns, popovers, tooltips-->
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <!--!CSS-->
-    <link rel="stylesheet" href="../css/style.css" />
-    <!--!JavaScript-->
-    <script src="../javascript/script.js"></script>
-  </head>
 
-  <body>
-    <header class="container-fluid bg-dark text-white py-3 shadow-sm">
-      <div class="container d-flex justify-content-between align-items-center">
-        <h1 class="mb-0 fw-bold">
-          <a class="text-white text-decoration-none" href="index.html">CODER</a>
-        </h1>
-        <nav aria-label="Főmenü" class="ms-auto">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="csharp.html"
-                >C# programozás</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="javascript.html"
-                >JavaScript</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="sqlAdatb.html"
-                >SQL és adatbázis</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Főoldal</title>
+  <!--!Bootstrap-->
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+  <!--?Popper: dropdowns, popovers, tooltips-->
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <!--!CSS-->
+  <link rel="stylesheet" href="../css/style.css" />
+  <!--!JavaScript-->
+  <script src="../javascript/script.js"></script>
+</head>
 
-    <nav class="container my-3" aria-label="C# témakörök">
-      <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" href="#bevezetes">Bevezetés</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#valtozok">Változók</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#feltetelek">Feltételek</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#ciklusok">Ciklusok</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#metodusok">Metódusok</a>
-        </li>
-      </ul>
-    </nav>
-  </body>
+<body>
+  <header class="container-fluid bg-dark text-white py-3 shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="mb-0 fw-bold">
+        <a class="text-white text-decoration-none" href="index.html">CODER</a>
+      </h1>
+      <nav aria-label="Főmenü" class="ms-auto">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="csharp.html">C# programozás</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="javascript.html">JavaScript</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="sqlAdatb.html">SQL és adatbázis</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="container my-3" aria-label="C# témakörök">
+    <ul class="nav nav-pills justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="#bevezetes">Bevezetés</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#valtozok">Változók</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#feltetelek">Feltételek</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#ciklusok">Ciklusok</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#metodusok">Metódusok</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section aria-labelledby="csharp-alapok">
+    <h2 id="csharp-alapok">C# – Alapvető vezérlési szerkezetek</h2>
+
+    <h3>Elágazás – if, else</h3>
+    <p>Feltétel alapján különböző utasításokat hajt végre.</p>
+    <pre><code>if (a > b)
+{
+    Console.WriteLine("A nagyobb");
+}
+else
+{
+    Console.WriteLine("B nagyobb vagy egyenlő");
+}</code></pre>
+
+    <h3>Többágú elágazás – switch</h3>
+    <p>Egy változó értéke alapján választ a lehetőségek közül.</p>
+    <pre><code>switch (nap)
+{
+    case 1:
+        Console.WriteLine("Hétfő");
+        break;
+    case 2:
+        Console.WriteLine("Kedd");
+        break;
+    default:
+        Console.WriteLine("Másik nap");
+        break;
+}</code></pre>
+
+    <h3>Ciklusok – for, foreach, while</h3>
+    <p>A <strong>for</strong> ismert ismétlésszám esetén használható.</p>
+    <pre><code>for (int i = 0; i < 5; i++)
+{
+    Console.WriteLine(i);
+}</code></pre>
+
+    <p>A <strong>foreach</strong> egy kollekció elemein halad végig.</p>
+    <pre><code>int[] szamok = { 1, 2, 3 };
+
+foreach (int szam in szamok)
+{
+    Console.WriteLine(szam);
+}</code></pre>
+
+    <p>A <strong>while</strong> addig ismétel, amíg a feltétel igaz.</p>
+    <pre><code>int i = 0;
+
+while (i < 5)
+{
+    Console.WriteLine(i);
+    i++;
+}</code></pre>
+  </section>
+</body>
+
 </html>
