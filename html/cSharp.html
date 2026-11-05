@@ -25,7 +25,7 @@
       <nav aria-label="Főmenü" class="ms-auto">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link text-white" href="csharp.html">C# programozás</a>
+            <a class="nav-link text-white" href="cSharp.html">C# programozás</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="javascript.html">JavaScript</a>
@@ -58,12 +58,15 @@
     </ul>
   </nav>
 
-  <section aria-labelledby="csharp-alapok">
-    <h2 id="csharp-alapok">C# – Alapvető vezérlési szerkezetek</h2>
 
-    <h3>Elágazás – if, else</h3>
-    <p>Feltétel alapján különböző utasításokat hajt végre.</p>
-    <pre><code>if (a > b)
+  <main class="container my-5">
+
+    <section aria-labelledby="csharp-alapok">
+      <h2 id="csharp-alapok">C# – Alapvető vezérlési szerkezetek</h2>
+
+      <h3>Elágazás – if, else</h3>
+      <p>Feltétel alapján különböző utasításokat hajt végre.</p>
+      <pre><code>if (a > b)
 {
     Console.WriteLine("A nagyobb");
 }
@@ -72,9 +75,9 @@ else
     Console.WriteLine("B nagyobb vagy egyenlő");
 }</code></pre>
 
-    <h3>Többágú elágazás – switch</h3>
-    <p>Egy változó értéke alapján választ a lehetőségek közül.</p>
-    <pre><code>switch (nap)
+      <h3>Többágú elágazás – switch</h3>
+      <p>Egy változó értéke alapján választ a lehetőségek közül.</p>
+      <pre><code>switch (nap)
 {
     case 1:
         Console.WriteLine("Hétfő");
@@ -87,30 +90,31 @@ else
         break;
 }</code></pre>
 
-    <h3>Ciklusok – for, foreach, while</h3>
-    <p>A <strong>for</strong> ismert ismétlésszám esetén használható.</p>
-    <pre><code>for (int i = 0; i < 5; i++)
+      <h3>Ciklusok – for, foreach, while</h3>
+      <p>A <strong>for</strong> ismert ismétlésszám esetén használható.</p>
+      <pre><code>for (int i = 0; i < 5; i++)
 {
     Console.WriteLine(i);
 }</code></pre>
 
-    <p>A <strong>foreach</strong> egy kollekció elemein halad végig.</p>
-    <pre><code>int[] szamok = { 1, 2, 3 };
+      <p>A <strong>foreach</strong> egy kollekció elemein halad végig.</p>
+      <pre><code>int[] szamok = { 1, 2, 3 };
 
 foreach (int szam in szamok)
 {
     Console.WriteLine(szam);
 }</code></pre>
 
-    <p>A <strong>while</strong> addig ismétel, amíg a feltétel igaz.</p>
-    <pre><code>int i = 0;
+      <p>A <strong>while</strong> addig ismétel, amíg a feltétel igaz.</p>
+      <pre><code>int i = 0;
 
 while (i < 5)
 {
     Console.WriteLine(i);
     i++;
 }</code></pre>
-  </section>
+    </section>
+  </main>
 </body>
 
 </html>
