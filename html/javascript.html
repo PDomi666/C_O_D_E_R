@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Főoldal</title>
+    <!--!Bootstrap-->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <!--?Popper: dropdowns, popovers, tooltips-->
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!--!CSS-->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!--!JavaScript-->
+    <script src="../javascript/script.js"></script>
+</head>
+
+<body>
+    <header class="container-fluid bg-dark text-white py-3 shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="mb-0 fw-bold">
+                <a class="text-white text-decoration-none" href="index.html">CODER</a>
+            </h1>
+            <nav aria-label="Főmenü" class="ms-auto">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="csharp.html">C# programozás</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="javascript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="sqlAdatb.html">SQL és adatbázis</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="sql-topic-nav sticky-top" aria-label="SQL-témakörök">
+        <ul class="sql-topic-list">
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-1"></a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#js-async-title1">Aszinkron programozás és API</a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-3">SQL-összesítő függvények</a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-4">SQL-szövegkezelő függvények</a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-5">SQL-matematikai és dátumkezelő függvények</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="sql-page">
+        
+<section class="mb-4" aria-labelledby="js-async-title1">
+    <div class="sql-intro">
+        <h2 id="js-async-title1">Aszinkron programozás és API</h2>
+        <p>Ismerd meg az aszinkron működést, a JSON-adatokat és a szerverkommunikációt.</p>
+    </div>
+
+    <div class="sql-content">
+        <h3>1. Szinkron és aszinkron működés</h3>
+        <ul>
+            <li><strong>Szinkron:</strong> az utasítások egymás után futnak.</li>
+            <li><strong>Aszinkron:</strong> a hosszabb műveletek közben más kód is futhat.</li>
+        </ul>
+
+        <h3>2. Callback és időzítők</h3>
+        <ul>
+            <li><code>Callback:</code> később meghívott függvény.</li>
+            <li><code>setTimeout():</code> egyszeri késleltetés.</li>
+            <li><code>setInterval():</code> ismétlődő végrehajtás.</li>
+            <li><code>clearInterval():</code> időzítő leállítása.</li>
+            <li><code>addEventListener():</code> események kezelése.</li>
+            <li><code>Event Loop:</code> az aszinkron feladatok ütemezését segíti.</li>
+        </ul>
+
+        <h3>3. Promise és async/await</h3>
+        <p>
+            A <code>Promise</code> egy későbbi eredményt vagy hibát képvisel.
+            A <code>.then()</code> a sikeres eredményt, a
+            <code>.catch()</code> a hibát kezeli.
+            Az <code>async/await</code> egyszerűbbé teszi az aszinkron kódot,
+            a <code>try/catch</code> pedig a hibakezelést.
+        </p>
+
+        <h3>4. API, HTTP és JSON</h3>
+        <ul>
+            <li><strong>API:</strong> alkalmazások közötti kommunikáció.</li>
+            <li><strong>GET:</strong> adatok lekérése.</li>
+            <li><strong>POST:</strong> adatok küldése.</li>
+            <li><strong>PUT / PATCH:</strong> adatok módosítása.</li>
+            <li><code>JSON.stringify()</code>: objektum átalakítása JSON-szöveggé.</li>
+            <li><code>JSON.parse()</code>: JSON-szöveg feldolgozása.</li>
+        </ul>
+
+        <h3>5. Adatok lekérése fetch() segítségével</h3>
+        <p>
+            A <code>fetch()</code> HTTP-kérést indít. A
+            <code>response.json()</code> feldolgozza a JSON-választ,
+            a <code>response.ok</code> pedig ellenőrzi, sikeres volt-e a kérés.
+        </p>
+
+        <h4>getFetch() függvény</h4>
+        <pre><code>const getMethodFetch = async (url) =&gt; {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`GET hiba: ${response.status} ${response.statusText}`);
+        }
+        return await response.json();
+    } catch (error) {
+        throw new Error(`Hiba történt: ${error.message}`);
+    }
+};</code></pre>
+
+        <h4>Használata</h4>
+        <pre><code>const fetchData = async () =&gt; {
+    try {
+        const data = await getMethodFetch (url);
+        console.log(&#39;Fetch eredménye: &#39;, data);
+    } catch (error) {
+        console.error(&#39;Hiba történt: &#39;, error);
+    }
+};</code></pre>
+
+        <p class="sql-result">
+            <strong>Lényeg:</strong> a fetch() lekéri az adatokat,
+            az async/await megkönnyíti a feldolgozást, a try/catch
+            és a catch() pedig segít a hibák kezelésében.
+        </p>
+    </div>
+</section>
+
+    </main>
+</body>
+
+</html>

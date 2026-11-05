@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Főoldal</title>
+    <!--!Bootstrap-->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <!--?Popper: dropdowns, popovers, tooltips-->
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!--!CSS-->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!--!JavaScript-->
+    <script src="../javascript/script.js"></script>
+</head>
+
+<body>
+    <header class="container-fluid bg-dark text-white py-3 shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="site-title mb-0 fw-bold">
+                <a class="text-white text-decoration-none" href="index.html">CODER</a>
+            </h1>
+            <nav aria-label="Főmenü" class="ms-auto">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="csharp.html">C# programozás</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="javascript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="sqlAdatb.html">SQL és adatbázis</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="sql-topic-nav sticky-top" aria-label="SQL-témakörök">
+        <ul class="sql-topic-list">
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-1">SQL-lekérdezések alapjai</a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-2">SQL-feltételek és szűrések</a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-3">SQL-összesítő függvények</a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-4">SQL-szövegkezelő függvények</a>
+            </li>
+            <li class="sql-topic-item">
+                <a class="sql-topic-link" href="#sql-title-5">SQL-matematikai és dátumkezelő függvények</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="sql-page">
+        <section class="mb-4" aria-labelledby="sql-title-1">
+            <div class="sql-intro">
+                <h2 id="sql-title-1">SQL-lekérdezések alapjai</h2>
+                <p>
+                    Az SQL segítségével adatokat kérdezhetünk le, szűrhetünk,
+                    rendezhetünk és kapcsolhatunk össze adatbázistáblákból.
+                </p>
+            </div>
+
+            <div class="sql-content">
+                <h3>A legfontosabb SQL-utasítások</h3>
+                <p class="sql-description">
+                    A lekérdezések különböző részei meghatározzák, hogy honnan
+                    származzanak az adatok, milyen feltételeknek feleljenek meg, és
+                    hogyan jelenjenek meg.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Utasítás</th>
+                            <th>Jelentése</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>SELECT</code></td>
+                            <td>Kiválasztja a megjelenítendő oszlopokat.</td>
+                        </tr>
+                        <tr>
+                            <td><code>DISTINCT</code></td>
+                            <td>Eltávolítja az ismétlődő eredményeket.</td>
+                        </tr>
+                        <tr>
+                            <td><code>FROM</code></td>
+                            <td>Megadja, melyik táblából kérjük le az adatokat.</td>
+                        </tr>
+                        <tr>
+                            <td><code>INNER JOIN</code></td>
+                            <td>
+                                Összekapcsolja a két táblában egymáshoz tartozó rekordokat.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>WHERE</code></td>
+                            <td>Feltétel alapján szűri a rekordokat.</td>
+                        </tr>
+                        <tr>
+                            <td><code>GROUP BY</code></td>
+                            <td>Csoportosítja az azonos értékekhez tartozó rekordokat.</td>
+                        </tr>
+                        <tr>
+                            <td><code>HAVING</code></td>
+                            <td>A csoportosítás után szűri a csoportokat.</td>
+                        </tr>
+                        <tr>
+                            <td><code>ORDER BY</code></td>
+                            <td>Növekvő vagy csökkenő sorrendbe rendezi az eredményt.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Példák</h4>
+                <pre><code>-- 1. Adatok lekérdezése
+SELECT nev, atlag
+FROM Tanulok;
+
+-- 2. Egyedi osztályok megjelenítése
+SELECT DISTINCT osztaly
+FROM Tanulok;
+
+-- 3. Szűrés
+SELECT nev, atlag
+FROM Tanulok
+WHERE atlag >= 4.00;
+
+-- 4. Rendezés
+SELECT nev, atlag
+FROM Tanulok
+ORDER BY atlag DESC;
+
+-- 5. Csoportosítás
+SELECT osztaly, COUNT(*) AS letszam
+FROM Tanulok
+GROUP BY osztaly;
+
+-- 6. Csoportok szűrése
+SELECT osztaly, COUNT(*) AS letszam
+FROM Tanulok
+GROUP BY osztaly
+HAVING COUNT(*) >= 5;
+
+-- 7. Két tábla összekapcsolása
+SELECT Tanulok.nev, Osztalyok.osztaly_nev
+FROM Tanulok
+INNER JOIN Osztalyok
+    ON Tanulok.osztaly_id = Osztalyok.id;</code></pre>
+
+                <p class="sql-result">
+                    <strong>Tipp:</strong> a WHERE az egyes rekordokat szűri, a HAVING
+                    pedig a csoportokat. Az ASC növekvő, a DESC csökkenő rendezést
+                    jelent.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="sql-title-2">
+            <div class="sql-intro">
+                <h2 id="sql-title-2">SQL-feltételek és szűrések</h2>
+                <p>
+                    A feltételek segítségével pontosan meghatározhatjuk, hogy mely
+                    rekordokat szeretnénk megjeleníteni.
+                </p>
+            </div>
+
+            <div class="sql-content">
+                <h3>Feltételek és operátorok</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operátor</th>
+                            <th>Mit csinál?</th>
+                            <th>Példa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>BETWEEN</code></td>
+                            <td>
+                                Két határérték közötti értékeket keres, a határokat is
+                                beleértve.
+                            </td>
+                            <td><code>atlag BETWEEN 3 AND 5</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>IN</code></td>
+                            <td>Ellenőrzi, hogy az érték szerepel-e egy listában.</td>
+                            <td><code>osztaly IN ('10.A', '10.B')</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>IS NULL</code></td>
+                            <td>A hiányzó értékeket keresi.</td>
+                            <td><code>atlag IS NULL</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>IS NOT NULL</code></td>
+                            <td>A nem hiányzó értékeket keresi.</td>
+                            <td><code>atlag IS NOT NULL</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>NOT</code></td>
+                            <td>Tagadja a feltételt.</td>
+                            <td><code>NOT (atlag &lt; 3)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>LIKE</code></td>
+                            <td>Szövegminta alapján keres.</td>
+                            <td><code>nev LIKE 'Kiss%'</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>AND</code></td>
+                            <td>Minden feltételnek teljesülnie kell.</td>
+                            <td><code>atlag >= 4 AND osztaly = '10.A'</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>OR</code></td>
+                            <td>Legalább az egyik feltételnek teljesülnie kell.</td>
+                            <td><code>osztaly = '10.A' OR osztaly = '10.B'</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Példák</h4>
+                <pre><code>-- 1. Átlag egy megadott tartományban
+SELECT nev, atlag
+FROM Tanulok
+WHERE atlag BETWEEN 3.00 AND 5.00;
+
+-- 2. Több osztály kiválasztása
+SELECT nev, osztaly
+FROM Tanulok
+WHERE osztaly IN ('10.A', '10.B');
+
+-- 3. Hiányzó átlagok
+SELECT nev
+FROM Tanulok
+WHERE atlag IS NULL;
+
+-- 4. Két osztály kizárása
+SELECT nev, osztaly
+FROM Tanulok
+WHERE osztaly NOT IN ('10.A', '10.B');
+
+-- 5. Kiss névvel kezdődő nevek
+SELECT nev
+FROM Tanulok
+WHERE nev LIKE 'Kiss%';
+
+-- 6. Annát tartalmazó nevek
+SELECT nev
+FROM Tanulok
+WHERE nev LIKE '%Anna%';
+
+-- 7. Két feltétel egyszerre
+SELECT nev, atlag
+FROM Tanulok
+WHERE atlag >= 4.00
+  AND osztaly = '10.A';</code></pre>
+
+                <p class="sql-result">
+                    <strong>Tipp:</strong> a LIKE operátornál a % tetszőleges számú
+                    karaktert, az _ pontosan egy karaktert helyettesít. A NULL
+                    ellenőrzésére IS NULL vagy IS NOT NULL használatos, nem az = NULL.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="sql-title-3">
+            <div class="sql-intro">
+                <h2 id="sql-title-3">SQL-összesítő függvények</h2>
+                <p>
+                    Az összesítő függvények segítségével több rekordból egyetlen értéket
+                    számíthatunk ki, például létszámot, átlagot vagy szélsőértéket.
+                </p>
+            </div>
+
+            <div class="sql-content">
+                <h3>A legfontosabb összesítő függvények</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Függvény</th>
+                            <th>Jelentése</th>
+                            <th>Példa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>COUNT()</code></td>
+                            <td>Megszámolja a sorokat vagy a nem NULL értékeket.</td>
+                            <td><code>COUNT(*)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>SUM()</code></td>
+                            <td>Összeadja a numerikus értékeket.</td>
+                            <td><code>SUM(fizetes)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>AVG()</code></td>
+                            <td>Kiszámítja a numerikus értékek átlagát.</td>
+                            <td><code>AVG(atlag)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>MIN()</code></td>
+                            <td>Megadja a legkisebb értéket.</td>
+                            <td><code>MIN(atlag)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>MAX()</code></td>
+                            <td>Megadja a legnagyobb értéket.</td>
+                            <td><code>MAX(atlag)</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Példák</h4>
+                <pre><code>-- 1. Tanulók száma
+SELECT COUNT(*) AS letszam
+FROM Tanulok;
+
+-- 2. Átlagok összege
+SELECT SUM(atlag) AS osszeg
+FROM Tanulok;
+
+-- 3. Átlagos tanulmányi eredmény
+SELECT AVG(atlag) AS tanulmanyi_atlag
+FROM Tanulok;
+
+-- 4. Legkisebb és legnagyobb átlag
+SELECT
+    MIN(atlag) AS minimum,
+    MAX(atlag) AS maximum
+FROM Tanulok;
+
+-- 5. Összesítés osztályonként
+SELECT
+    osztaly,
+    COUNT(*) AS letszam,
+    AVG(atlag) AS osztalyatlag
+FROM Tanulok
+GROUP BY osztaly;
+
+-- 6. Csak a legalább 4-es átlagú osztályok
+SELECT
+    osztaly,
+    AVG(atlag) AS osztalyatlag
+FROM Tanulok
+GROUP BY osztaly
+HAVING AVG(atlag) >= 4.00
+ORDER BY osztalyatlag DESC;</code></pre>
+
+                <p class="sql-result">
+                    <strong>Tipp:</strong> a GROUP BY külön-külön végez összesítést
+                    minden csoportra. A HAVING segítségével az összesített eredmények
+                    alapján szűrhetünk.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="sql-title-4">
+            <div class="sql-intro">
+                <h2 id="sql-title-4">SQL-szövegkezelő függvények</h2>
+                <p>
+                    A szövegkezelő függvényekkel karakterláncokat alakíthatunk át,
+                    vághatunk ki, fűzhetünk össze vagy tisztíthatunk meg.
+                </p>
+            </div>
+
+            <div class="sql-content">
+                <h3>Szövegkezelő függvények áttekintése</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Függvény</th>
+                            <th>Mit csinál?</th>
+                            <th>Példa és eredmény</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>UPPER()</code></td>
+                            <td>Nagybetűssé alakít.</td>
+                            <td><code>UPPER('alma')</code> → ALMA</td>
+                        </tr>
+                        <tr>
+                            <td><code>LOWER()</code></td>
+                            <td>Kisbetűssé alakít.</td>
+                            <td><code>LOWER('ALMA')</code> → alma</td>
+                        </tr>
+                        <tr>
+                            <td><code>LENGTH()</code></td>
+                            <td>Megadja a szöveg hosszát.</td>
+                            <td><code>LENGTH('alma')</code> → 4</td>
+                        </tr>
+                        <tr>
+                            <td><code>CONCAT()</code></td>
+                            <td>Szövegeket fűz össze.</td>
+                            <td><code>CONCAT('Jó', ' nap')</code> → Jó nap</td>
+                        </tr>
+                        <tr>
+                            <td><code>SUBSTRING()</code></td>
+                            <td>Kivág egy szövegrészletet.</td>
+                            <td><code>SUBSTRING('alma', 1, 2)</code> → al</td>
+                        </tr>
+                        <tr>
+                            <td><code>TRIM()</code></td>
+                            <td>Eltávolítja a szélső szóközöket.</td>
+                            <td><code>TRIM(' alma ')</code> → alma</td>
+                        </tr>
+                        <tr>
+                            <td><code>REPLACE()</code></td>
+                            <td>Lecseréli a megadott szövegrészt.</td>
+                            <td><code>REPLACE('alma', 'a', 'o')</code> → olmo</td>
+                        </tr>
+                        <tr>
+                            <td><code>LEFT()</code></td>
+                            <td>A bal oldalról ad vissza karaktereket.</td>
+                            <td><code>LEFT('alma', 2)</code> → al</td>
+                        </tr>
+                        <tr>
+                            <td><code>RIGHT()</code></td>
+                            <td>A jobb oldalról ad vissza karaktereket.</td>
+                            <td><code>RIGHT('alma', 2)</code> → ma</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Példák</h4>
+                <pre><code>SELECT UPPER('alma') AS nagybetus;
+SELECT LOWER('ALMA') AS kisbetus;
+SELECT LENGTH('alma') AS hossz;
+SELECT CONCAT('Jó', ' nap') AS koszontes;
+SELECT SUBSTRING('alma', 1, 2) AS reszlet;
+SELECT TRIM(' alma ') AS tiszta;
+SELECT REPLACE('alma', 'a', 'o') AS csere;
+SELECT LEFT('alma', 2) AS bal_oldal;
+SELECT RIGHT('alma', 2) AS jobb_oldal;
+
+-- Több függvény használata együtt
+SELECT UPPER(TRIM(nev)) AS tisztitott_nev
+FROM Tanulok;</code></pre>
+
+                <p class="sql-result">
+                    <strong>Tipp:</strong> egy függvény eredményét átadhatjuk egy másik
+                    függvénynek is. Így például először eltávolíthatjuk a felesleges
+                    szóközöket, majd nagybetűssé alakíthatjuk a nevet.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-4" aria-labelledby="sql-title-5">
+            <div class="sql-intro">
+                <h2 id="sql-title-5">SQL-matematikai és dátumkezelő függvények</h2>
+                <p>
+                    A matematikai függvények számításokat végeznek, a dátumkezelő
+                    függvények pedig segítenek az időpontok, dátumrészek és
+                    dátumkülönbségek meghatározásában.
+                </p>
+            </div>
+
+            <div class="sql-content">
+                <h3>Matematikai függvények</h3>
+
+                <table class="mb-4">
+                    <thead>
+                        <tr>
+                            <th>Függvény</th>
+                            <th>Mit csinál?</th>
+                            <th>Példa és eredmény</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ROUND()</code></td>
+                            <td>Kerekít.</td>
+                            <td><code>ROUND(12.567, 2)</code> → 12.57</td>
+                        </tr>
+                        <tr>
+                            <td><code>CEIL()</code> / <code>CEILING()</code></td>
+                            <td>Felfelé kerekít.</td>
+                            <td><code>CEIL(4.2)</code> → 5</td>
+                        </tr>
+                        <tr>
+                            <td><code>FLOOR()</code></td>
+                            <td>Lefelé kerekít.</td>
+                            <td><code>FLOOR(4.9)</code> → 4</td>
+                        </tr>
+                        <tr>
+                            <td><code>ABS()</code></td>
+                            <td>Abszolút értéket számol.</td>
+                            <td><code>ABS(-10)</code> → 10</td>
+                        </tr>
+                        <tr>
+                            <td><code>POWER()</code></td>
+                            <td>Hatványoz.</td>
+                            <td><code>POWER(2, 3)</code> → 8</td>
+                        </tr>
+                        <tr>
+                            <td><code>SQRT()</code></td>
+                            <td>Négyzetgyököt számol.</td>
+                            <td><code>SQRT(25)</code> → 5</td>
+                        </tr>
+                        <tr>
+                            <td><code>MOD()</code></td>
+                            <td>Megadja az osztási maradékot.</td>
+                            <td><code>MOD(10, 3)</code> → 1</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Dátumkezelő függvények</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Függvény vagy kifejezés</th>
+                            <th>Mit csinál?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>CURRENT_DATE</code></td>
+                            <td>Az aktuális dátumot adja vissza.</td>
+                        </tr>
+                        <tr>
+                            <td><code>CURRENT_TIMESTAMP</code></td>
+                            <td>Az aktuális dátumot és időt adja vissza.</td>
+                        </tr>
+                        <tr>
+                            <td><code>EXTRACT()</code></td>
+                            <td>
+                                Kinyeri a dátum egy részét, például az évet vagy a hónapot.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>DATEDIFF()</code></td>
+                            <td>
+                                Kiszámítja két dátum különbségét; a pontos működés
+                                adatbázisfüggő.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>DATE_ADD()</code></td>
+                            <td>Időt ad hozzá egy dátumhoz MySQL-ben.</td>
+                        </tr>
+                        <tr>
+                            <td><code>YEAR()</code></td>
+                            <td>Kinyeri az évet MySQL-ben.</td>
+                        </tr>
+                        <tr>
+                            <td><code>MONTH()</code></td>
+                            <td>Kinyeri a hónapot MySQL-ben.</td>
+                        </tr>
+                        <tr>
+                            <td><code>DAY()</code></td>
+                            <td>Kinyeri a hónap napját MySQL-ben.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Példák</h4>
+                <pre><code>-- Matematikai műveletek
+SELECT ROUND(12.567, 2);
+SELECT CEIL(4.2);
+SELECT FLOOR(4.9);
+SELECT ABS(-10);
+SELECT POWER(2, 3);
+SELECT SQRT(25);
+SELECT MOD(10, 3);
+
+-- Aktuális dátum és idő
+SELECT CURRENT_DATE;
+SELECT CURRENT_TIMESTAMP;
+
+-- Dátumrészek kinyerése MySQL-ben
+SELECT YEAR('2026-10-15');
+SELECT MONTH('2026-10-15');
+SELECT DAY('2026-10-15');
+
+-- Dátumrészek kinyerése szabványosabb szintaxissal
+SELECT EXTRACT(YEAR FROM CURRENT_DATE);
+SELECT EXTRACT(MONTH FROM CURRENT_DATE);
+SELECT EXTRACT(DAY FROM CURRENT_DATE);
+
+-- Két dátum közötti napok száma MySQL-ben
+SELECT DATEDIFF('2026-10-15', '2026-10-01');
+-- Eredmény: 14
+
+-- Hét nap hozzáadása egy dátumhoz MySQL-ben
+SELECT DATE_ADD('2026-10-15', INTERVAL 7 DAY);
+-- Eredmény: 2026-10-22</code></pre>
+
+                <p class="sql-result">
+                    <strong>Tipp:</strong> a matematikai függvények többnyire hasonlóan
+                    működnek a különböző adatbázisokban, de a dátumfüggvények szintaxisa
+                    eltérhet. A YEAR(), MONTH(), DAY(), DATEDIFF() és DATE_ADD() példái
+                    MySQL-hez készültek.
+                </p>
+            </div>
+        </section>
+
+
+        <section class="mb-4" aria-labelledby="sql-pelda">
+            <div class="sql-intro">
+                <h2 id="sql-title-1">pelda</h2>
+                <p>
+                    példa leírás
+                </p>
+            </div>
+
+            <div class="sql-content">
+                <h3>pelda</h3>
+                <p class="sql-description">
+                   peldA leírás
+                </p>
+
+                <h4>Példák</h4>
+                <pre><code>-- pelda
+</code></pre>
+
+                <p class="sql-result">
+                    <strong>Tipp:</strong> pelda tipp
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <button type="button" aria-label="Ugrás az oldal tetejére" title="Ugrás az oldal tetejére"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" style="
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        z-index: 1030;
+        width: 3.5rem;
+        height: 3.5rem;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: linear-gradient(145deg, #5f657d, #626263);
+        box-shadow: 0 8px 22px rgba(39, 57, 130, 0.35);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      " onmouseenter="
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 12px 26px rgba(39,57,130,.45)';
+      " onmouseleave="
+        this.style.transform = '';
+        this.style.boxShadow = '0 8px 22px rgba(39,57,130,.35)';
+      " class="btn btn-primary rounded-circle">
+        <span aria-hidden="true" style="
+          font-size: 1.5rem;
+          line-height: 1;
+          font-weight: 700;
+          -webkit-text-stroke: 1px currentColor;
+        ">↑</span>
+    </button>
+</body>
+
+</html>
