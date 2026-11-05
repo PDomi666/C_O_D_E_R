@@ -38,8 +38,8 @@
         </div>
     </header>
 
-    <nav class="sql-topic-nav sticky-top" aria-label="SQL-témakörök">
-        <ul class="sql-topic-list">
+   <nav class="csharp-topic-nav" aria-label="C# témakörök">
+    <ul class="csharp-topic-list">
             <li class="sql-topic-item">
                 <a class="sql-topic-link" href="#sql-title-1"></a>
             </li>
@@ -141,6 +141,37 @@
 </section>
 
     </main>
+
+    <button type="button" aria-label="Ugrás az oldal tetejére" title="Ugrás az oldal tetejére"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" style="
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        z-index: 1030;
+        width: 3.5rem;
+        height: 3.5rem;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: linear-gradient(145deg, #5f657d, #626263);
+        box-shadow: 0 8px 22px rgba(39, 57, 130, 0.35);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      " onmouseenter="
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 12px 26px rgba(39,57,130,.45)';
+      " onmouseleave="
+        this.style.transform = '';
+        this.style.boxShadow = '0 8px 22px rgba(39,57,130,.35)';
+      " class="btn btn-primary rounded-circle">
+        <span aria-hidden="true" style="
+          font-size: 1.5rem;
+          line-height: 1;
+          font-weight: 700;
+          -webkit-text-stroke: 1px currentColor;
+        ">↑</span>
+    </button>
 </body>
 
 </html>

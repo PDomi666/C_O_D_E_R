@@ -38,35 +38,29 @@
     </div>
   </header>
 
-  <nav class="container my-3" aria-label="C# témakörök">
-    <ul class="nav nav-pills justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link" href="#bevezetes">Bevezetés</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#valtozok">Változók</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#feltetelek">Feltételek</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#ciklusok">Ciklusok</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#metodusok">Metódusok</a>
-      </li>
+  <nav class="csharp-topic-nav" aria-label="C# témakörök">
+    <ul class="csharp-topic-list">
+      <li><a href="#csharp-basic-title">Vezérlési szerkezetek</a></li>
+      <li><a href="#csharp-init-title">Inicializálás és property-k</a></li>
+      <li><a href="#csharp-collections-title">Kollekciók</a></li>
+      <li><a href="#csharp-inheritance-title">Öröklődés</a></li>
+      <li><a href="#csharp-binding-title">Kötés</a></li>
+      <li><a href="#csharp-abstract-title">Absztrakt osztályok</a></li>
     </ul>
   </nav>
 
-
   <main class="container my-5">
+    <!-- 1. Alapok -->
+    <section class="mb-4" aria-labelledby="csharp-basic-title">
+      <div class="sql-intro">
+        <h2 id="csharp-basic-title">Alapvető vezérlési szerkezetek</h2>
+        <p>Ismerd meg a feltételes elágazásokat és a ciklusok működését C# nyelven.</p>
+      </div>
 
-    <section aria-labelledby="csharp-alapok">
-      <h2 id="csharp-alapok">C# – Alapvető vezérlési szerkezetek</h2>
-
-      <h3>Elágazás – if, else</h3>
-      <p>Feltétel alapján különböző utasításokat hajt végre.</p>
-      <pre><code>if (a > b)
+      <div class="sql-content">
+        <h3>1. Elágazás – if, else</h3>
+        <p>Feltétel alapján különböző utasításokat hajt végre.</p>
+        <pre><code>if (a > b)
 {
     Console.WriteLine("A nagyobb");
 }
@@ -75,9 +69,9 @@ else
     Console.WriteLine("B nagyobb vagy egyenlő");
 }</code></pre>
 
-      <h3>Többágú elágazás – switch</h3>
-      <p>Egy változó értéke alapján választ a lehetőségek közül.</p>
-      <pre><code>switch (nap)
+        <h3>2. Többágú elágazás – switch</h3>
+        <p>Egy változó értéke alapján választ a lehetőségek közül.</p>
+        <pre><code>switch (nap)
 {
     case 1:
         Console.WriteLine("Hétfő");
@@ -90,31 +84,426 @@ else
         break;
 }</code></pre>
 
-      <h3>Ciklusok – for, foreach, while</h3>
-      <p>A <strong>for</strong> ismert ismétlésszám esetén használható.</p>
-      <pre><code>for (int i = 0; i < 5; i++)
+        <h3>3. Ciklusok – for, foreach, while</h3>
+        <p><strong>for:</strong> ismert ismétlésszám esetén használható.</p>
+        <pre><code>for (int i = 0; i < 5; i++)
 {
     Console.WriteLine(i);
 }</code></pre>
 
-      <p>A <strong>foreach</strong> egy kollekció elemein halad végig.</p>
-      <pre><code>int[] szamok = { 1, 2, 3 };
+        <p><strong>foreach:</strong> egy tömb vagy kollekció elemein halad végig.</p>
+        <pre><code>int[] szamok = { 1, 2, 3 };
 
 foreach (int szam in szamok)
 {
     Console.WriteLine(szam);
 }</code></pre>
 
-      <p>A <strong>while</strong> addig ismétel, amíg a feltétel igaz.</p>
-      <pre><code>int i = 0;
+        <p><strong>while:</strong> addig ismétli az utasításokat, amíg a feltétel igaz.</p>
+        <pre><code>int i = 0;
 
 while (i < 5)
 {
     Console.WriteLine(i);
     i++;
 }</code></pre>
+
+        <p class="sql-result">
+          <strong>Lényeg:</strong> az if és switch elágazásokat,
+          a for, foreach és while ismétléseket valósít meg.
+        </p>
+      </div>
     </section>
+
+    <!-- 3. Inicializálás, konstruktorok és property-k -->
+    <section class="mb-4" aria-labelledby="csharp-init-title">
+      <div class="sql-intro">
+        <h2 id="csharp-init-title">Inicializálás, konstruktorok és property-k</h2>
+        <p>Ismerd meg a változók és objektumok inicializálását, a konstruktorokat és a property-k használatát.</p>
+      </div>
+
+      <div class="sql-content">
+        <h3>1. Inicializálás</h3>
+        <p>
+          Az inicializálás során kezdőértéket adunk a változóknak,
+          mezőknek vagy objektumoknak.
+        </p>
+        <pre><code>class Alakzat
+{
+    private double a = 10;
+    private double b;
+
+    public static int darab = 0;
+}</code></pre>
+
+        <h3>2. Statikus inicializálás – static</h3>
+        <ul>
+          <li><code>static:</code> az osztályhoz tartozik, nem egy konkrét objektumhoz.</li>
+          <li>A statikus mezőből közös adatot tárolhatunk minden objektum számára.</li>
+          <li>A statikus konstruktor egyszer fut le, az osztály első használatakor.</li>
+        </ul>
+        <pre><code>class Alakzat
+{
+    public static int darab;
+
+    static Alakzat()
+    {
+        darab = 0;
+    }
+}</code></pre>
+
+        <h3>3. Konstruktor</h3>
+        <p>
+          A konstruktor objektum létrehozásakor automatikusan lefut.
+          Neve megegyezik az osztály nevével, és általában az adatok
+          kezdőértékének beállítására szolgál.
+        </p>
+        <pre><code>class Teglalap
+{
+    private double a;
+    private double b;
+
+    public Teglalap(double a, double b)
+    {
+        this.a = a;
+        this.b = b;
+    }
+}
+
+Teglalap t = new Teglalap(10, 5);</code></pre>
+
+        <h3>4. Property – tulajdonság</h3>
+        <p>
+          A property szabályozott hozzáférést biztosít az osztály mezőihez.
+        </p>
+        <ul>
+          <li><code>get:</code> a mező értékének lekérése.</li>
+          <li><code>set:</code> a mező értékének módosítása.</li>
+          <li><code>private set:</code> kívülről nem módosítható.</li>
+        </ul>
+        <pre><code>class Teglalap
+{
+    public double A { get; set; }
+
+    public double B { get; private set; }
+
+    public Teglalap(double a, double b)
+    {
+        A = a;
+        B = b;
+    }
+}</code></pre>
+
+        <h3>5. Automatikus property</h3>
+        <p>
+          Az automatikus property esetén a C# automatikusan létrehozza
+          a háttérben tárolt mezőt.
+        </p>
+        <pre><code>public string Nev { get; set; }
+
+public double Terulet { get; private set; }</code></pre>
+
+        <p class="sql-result">
+          <strong>Lényeg:</strong> az inicializálás kezdőértéket ad,
+          a konstruktor létrehozáskor beállítja az objektum adatait,
+          a static az osztályhoz tartozik, a property pedig szabályozza
+          az adatok elérését és módosítását.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Kollekciók – List, Dictionary, HashSet -->
+    <section class="mb-4" aria-labelledby="csharp-collections-title">
+      <div class="sql-intro">
+        <h2 id="csharp-collections-title">Kollekciók – List, Dictionary, HashSet</h2>
+        <p>Ismerd meg a C# leggyakrabban használt adatszerkezeteit és azok működését.</p>
+      </div>
+
+      <div class="sql-content">
+        <h3>1. List – lista</h3>
+        <p>
+          A List dinamikus méretű lista, amelyben több azonos típusú
+          elemet tárolhatunk. Az elemek index alapján érhetők el.
+        </p>
+        <pre><code>List&lt;string&gt; nevek = new List&lt;string&gt;();
+
+nevek.Add("Anna");
+nevek.Add("Béla");
+
+Console.WriteLine(nevek[0]);
+
+nevek.Remove("Béla");</code></pre>
+
+        <h3>2. Dictionary – szótár</h3>
+        <p>
+          A Dictionary kulcs-érték párokat tárol.
+          Az értékeket egyedi kulcs alapján érhetjük el.
+        </p>
+        <pre><code>Dictionary&lt;string, int&gt; jegyek =
+    new Dictionary&lt;string, int&gt;();
+
+jegyek.Add("Anna", 5);
+jegyek.Add("Béla", 4);
+
+Console.WriteLine(jegyek["Anna"]);</code></pre>
+
+        <h3>3. HashSet – halmaz</h3>
+        <p>
+          A HashSet egyedi elemeket tárol, ezért ugyanaz az érték
+          csak egyszer szerepelhet benne.
+        </p>
+        <pre><code>HashSet&lt;int&gt; szamok = new HashSet&lt;int&gt;();
+
+szamok.Add(10);
+szamok.Add(20);
+szamok.Add(10);
+
+Console.WriteLine(szamok.Count); // 2</code></pre>
+
+        <h3>4. Fontos különbségek</h3>
+        <ul>
+          <li><strong>List:</strong> rendezett, indexelhető, ismétlődő elemeket is tárolhat.</li>
+          <li><strong>Dictionary:</strong> egyedi kulcsokhoz rendel értékeket.</li>
+          <li><strong>HashSet:</strong> csak egyedi elemeket tárol, nincs indexelése.</li>
+        </ul>
+
+        <p class="sql-result">
+          <strong>Lényeg:</strong> a List elemek tárolására,
+          a Dictionary kulcs-érték párok kezelésére,
+          a HashSet pedig egyedi értékek tárolására alkalmas.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. Öröklődés, absztrakció és interfészek -->
+    <section class="mb-4" aria-labelledby="csharp-inheritance-title">
+      <div class="sql-intro">
+        <h2 id="csharp-inheritance-title">Öröklődés és származtatás</h2>
+        <p>Ismerd meg, hogyan örökölhetnek az osztályok tulajdonságokat és metódusokat más osztályoktól.</p>
+      </div>
+
+      <div class="sql-content">
+        <h3>1. Öröklődés</h3>
+        <p>
+          Az öröklődés segítségével egy osztály átveheti egy másik
+          osztály elérhető mezőit és metódusait.
+        </p>
+        <ul>
+          <li><strong>Ősosztály:</strong> amelyből öröklünk.</li>
+          <li><strong>Leszármazott osztály:</strong> amely örököl.</li>
+          <li><code>:</code> az öröklődést jelöli.</li>
+          <li><code>base:</code> az ősosztály konstruktorának vagy tagjának elérésére szolgál.</li>
+        </ul>
+
+        <h3>2. Példa öröklődésre</h3>
+        <pre><code>class Alakzat
+{
+    protected double a;
+
+    public Alakzat(double a)
+    {
+        this.a = a;
+    }
+}
+
+class Teglalap : Alakzat
+{
+    private double b;
+
+    public Teglalap(double a, double b) : base(a)
+    {
+        this.b = b;
+    }
+
+    public double Terulet()
+    {
+        return a * b;
+    }
+}</code></pre>
+
+        <h3>3. Konstruktor meghívása – base</h3>
+        <p>
+          A <code>base(a)</code> meghívja az ősosztály konstruktorát,
+          és átadja neki az <code>a</code> paramétert.
+        </p>
+
+        <p class="sql-result">
+          <strong>Lényeg:</strong> az öröklődés lehetővé teszi a közös
+          tulajdonságok és metódusok újrafelhasználását, így csökkenti
+          a kódismétlést.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. Korai és késői kötés -->
+    <section class="mb-4" aria-labelledby="csharp-binding-title">
+      <div class="sql-intro">
+        <h2 id="csharp-binding-title">Korai és késői kötés</h2>
+        <p>Ismerd meg, mikor dől el, hogy egy objektum melyik metódusát hajtja végre a program.</p>
+      </div>
+
+      <div class="sql-content">
+        <h3>1. Korai kötés</h3>
+        <p>
+          Korai kötés esetén a meghívandó metódus már fordítási időben
+          meghatározható. Ilyen például a nem virtuális metódusok hívása.
+        </p>
+        <pre><code>class Alakzat
+{
+    public void Kiiras()
+    {
+        Console.WriteLine("Alakzat");
+    }
+}
+
+Alakzat a = new Alakzat();
+a.Kiiras();</code></pre>
+
+        <h3>2. Késői kötés</h3>
+        <p>
+          Késői kötés esetén a program futás közben dönti el,
+          hogy az objektum tényleges típusa alapján melyik felüldefiniált
+          metódus fusson le. C#-ban ezt a <code>virtual</code>
+          és <code>override</code> kulcsszavak teszik lehetővé.
+        </p>
+        <pre><code>class Alakzat
+{
+    public virtual void Kiiras()
+    {
+        Console.WriteLine("Alakzat");
+    }
+}
+
+class Teglalap : Alakzat
+{
+    public override void Kiiras()
+    {
+        Console.WriteLine("Téglalap");
+    }
+}
+
+Alakzat a = new Teglalap();
+a.Kiiras(); // Téglalap</code></pre>
+
+        <h3>3. Fontos kulcsszavak</h3>
+        <ul>
+          <li><code>virtual:</code> lehetővé teszi a metódus felülírását.</li>
+          <li><code>override:</code> a leszármazott osztályban felülírja a metódust.</li>
+          <li><code>new:</code> elrejti az ősosztály azonos nevű tagját, nem valódi felülírás.</li>
+        </ul>
+
+        <p class="sql-result">
+          <strong>Lényeg:</strong> korai kötésnél a metódus kiválasztása
+          fordítási időben, késői kötésnél futás közben, az objektum
+          tényleges típusa alapján történik.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. Absztrakt osztályok és metódusok -->
+    <section class="mb-4" aria-labelledby="csharp-abstract-title">
+      <div class="sql-intro">
+        <h2 id="csharp-abstract-title">Absztrakt osztályok és metódusok</h2>
+        <p>Ismerd meg, hogyan határozhatunk meg közös alapot és kötelezően megvalósítandó metódusokat.</p>
+      </div>
+
+      <div class="sql-content">
+        <h3>1. Absztrakt osztály – abstract</h3>
+        <p>
+          Az absztrakt osztály közös alapot biztosít a leszármazott
+          osztályoknak, de közvetlenül nem példányosítható.
+        </p>
+
+        <h3>2. Absztrakt metódus</h3>
+        <p>
+          Az absztrakt metódus csak a fejlécét tartalmazza,
+          a törzsét a leszármazott osztálynak kell megvalósítania.
+        </p>
+
+        <h3>3. Példa</h3>
+        <pre><code>abstract class Alakzat
+{
+    protected double a;
+
+    public Alakzat(double a)
+    {
+        this.a = a;
+    }
+
+    public abstract double Terulet();
+    public abstract double Kerulet();
+}
+
+class Teglalap : Alakzat
+{
+    private double b;
+
+    public Teglalap(double a, double b) : base(a)
+    {
+        this.b = b;
+    }
+
+    public override double Terulet()
+    {
+        return a * b;
+    }
+
+    public override double Kerulet()
+    {
+        return (a + b) * 2;
+    }
+}</code></pre>
+
+        <h3>4. Fontos kulcsszavak</h3>
+        <ul>
+          <li><code>abstract:</code> absztrakt osztály vagy metódus jelölése.</li>
+          <li><code>override:</code> az absztrakt metódus megvalósítása.</li>
+          <li><code>base:</code> az ősosztály konstruktorának meghívása.</li>
+        </ul>
+
+        <p class="sql-result">
+          <strong>Lényeg:</strong> az absztrakt osztály meghatározza
+          a közös felépítést, az absztrakt metódusok pedig előírják,
+          hogy a leszármazott osztályok milyen műveleteket valósítsanak meg.
+        </p>
+      </div>
+    </section>
+
+
+
   </main>
+
+
+  <button type="button" aria-label="Ugrás az oldal tetejére" title="Ugrás az oldal tetejére"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" style="
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        z-index: 1030;
+        width: 3.5rem;
+        height: 3.5rem;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: linear-gradient(145deg, #5f657d, #626263);
+        box-shadow: 0 8px 22px rgba(39, 57, 130, 0.35);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      " onmouseenter="
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 12px 26px rgba(39,57,130,.45)';
+      " onmouseleave="
+        this.style.transform = '';
+        this.style.boxShadow = '0 8px 22px rgba(39,57,130,.35)';
+      " class="btn btn-primary rounded-circle">
+        <span aria-hidden="true" style="
+          font-size: 1.5rem;
+          line-height: 1;
+          font-weight: 700;
+          -webkit-text-stroke: 1px currentColor;
+        ">↑</span>
+    </button>
 </body>
 
 </html>
